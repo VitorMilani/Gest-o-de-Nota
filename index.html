@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+   
+    <title>Trabalho Gestão de Notas</title>
+</head>
+<body>
+
+        <section class="cabecalho">
+            <div class="texto1"></div> 
+        <h1>📒​ Gestão de Nota</h1>
+        <p>Lista de Alunos</p>
+
+        <h2>
+                
+        <div id="div_cadastro_de_alunos">
+            <label for="input_nome">Nome:</label>
+            <input type="text" id="input_nome" required>
+            <label for="input_ra">RA:</label>
+            <input type="text" id="input_ra" required>
+            <label for="input_email">E-mail:</label>
+            <input type="email" id="input_email" placeholder="aluno@example.com" required>
+
+            <button onclick="adicionaDadosAluno()">✔️</button>
+
+            <p></p>
+        
+            <label for="input_prova_1">Prova 1:</label>
+            <input type="number" id="input_prova_1" step="0.1" min="0" max="8" required>
+            <label for="input_aep_1">AEP 1:</label>
+            <input type="number" id="input_aep_1" step="0.1" min="0.0" max="1.0" required>
+            <label for="input_prova_integrada_1">Integrada 1:</label>
+            <input type="number" id="input_prova_integrada_1" step="0.1" min="0" max="1" required>
+            <label for="input_prova_2">Prova 2:</label>
+            <input type="number" id="input_prova_2" step="0.1" min="0" max="8" required>
+            <label for="input_aep_2">AEP 2:</label>
+            <input type="number" id="input_aep_2" step="0.1" min="0" max="1" required>
+            <label for="input_prova_integrada_2">Integrada 2:</label>
+            <input type="number" id="input_prova_integrada_2" step="0.1" min="0" max="1" required>
+ 
+        </h2>
+        </div>
+        <div id="div_lista_de_nomes">
+            <ul id="lista_de_nomes"></ul>
+        </div>
+
+        <table id="tabela_de_tarefas">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>RA</th>
+                    <th>E-mail</th>
+                    <th>Prova 1</th>
+                    <th>AEP 1</th>
+                    <th>Integrada 1</th>
+                    <th>M.B 1</th>
+                    <th>Prova 2</th>
+                    <th>AEP 2</th>
+                    <th>Integrada 2</th>
+                    <th>M.B 2</th>
+                    <th>M.S</th>
+                    <th>Situação</th>
+                    <th>Apagar</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+            
+    <main>
+
+    <script src="app.js"></script>
+</body>
+</html>

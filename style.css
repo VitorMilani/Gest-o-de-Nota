@@ -1,0 +1,60 @@
+
+*{
+    margin: 5px ;
+    padding: 2px;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    
+ }
+ 
+ body{
+ background-color:#DCDCDC ;
+ height: 100vh;
+ }
+
+ .cabecalho h1{
+ text-align:center;
+ font-size: 50px;
+ }
+
+ .cabecalho p{
+    text-align:center;
+    font-size: 20px;
+ }
+
+ h2{
+   font-size: 20px;
+}
+
+table, th, td{
+   border: 1px solid;
+   border-collapse: collapse;
+   padding: 5px 5px 5px 5px;
+}
+
+table{
+  width: 100%;
+}
+
+thead{
+   text-align:center;
+}
+
+th{
+   background-color:#0aebeb;
+   color: #fff;
+
+}
+
+tr{
+   background-color:#ffffff;
+}
+
+
+
+
+
+
+
+
+ 
