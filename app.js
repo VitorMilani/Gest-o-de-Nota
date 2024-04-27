@@ -141,7 +141,7 @@ function criaNovoItemDaLista(tarefa, media1, media2, media3) {
     checkbox.addEventListener('change', function() {
         if (this.checked) {
             const rowIndex = novaLinha.rowIndex;
-            removerDadosSalvos(rowIndex - 1);
+            ExcluirColuna(rowIndex - 1);
             novaLinha.remove(); 
         }
     });
@@ -159,7 +159,7 @@ function LocalStorage() {
     });
 }
 
-function removerDadosSalvos(index) {
+function ExcluirColuna(index) {
     let dadosSalvos = JSON.parse(localStorage.getItem('dadosAlunos')) || [];
     dadosSalvos.splice(index, 1);
     localStorage.setItem('dadosAlunos', JSON.stringify(dadosSalvos));
