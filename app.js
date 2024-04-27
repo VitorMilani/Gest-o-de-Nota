@@ -59,7 +59,11 @@ function adicionaDadosAluno() {
         alert('A nota da Integrada 2 deve estar entre 0 e 1!');
         return;
     }
-
+   if (!email.includes('@')) {
+        alert("Forneça um E-mail válido!");
+        return;
+    }
+    
     criaNovoItemDaLista(DadosAluno, mediaB1, mediaB2, mediaS3);
 
     localStorage.setItem('dadosAlunos', JSON.stringify(dadosSalvos));
