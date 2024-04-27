@@ -58,9 +58,15 @@ function adicionaDadosAluno() {
     if (provaintegrada2 < 0, provaintegrada2 > 1) {
         alert('A nota da Integrada 2 deve estar entre 0 e 1!');
         return;
+        
     }
    if (!email.includes('@')) {
         alert("Forneça um E-mail válido!");
+        return;
+    }
+
+    if (ra.length !== 8) {
+        alert("Forneça um RA válido!");
         return;
     }
     
