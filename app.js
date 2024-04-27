@@ -1,13 +1,17 @@
+window.onload = function() {
+    LocalStorage();
+};
+
 function adicionaDadosAluno() {
-    var nome = document.getElementById('input_nome').value;
-    var ra = document.getElementById('input_ra').value;
-    var email = document.getElementById('input_email').value;
-    var prova1 = parseFloat(document.getElementById('input_prova_1').value);
-    var aep1 = parseFloat(document.getElementById('input_aep_1').value);
-    var provaintegrada1 = parseFloat(document.getElementById('input_prova_integrada_1').value);
-    var prova2 = parseFloat(document.getElementById('input_prova_2').value);
-    var aep2 = parseFloat(document.getElementById('input_aep_2').value);
-    var provaintegrada2 = parseFloat(document.getElementById('input_prova_integrada_2').value);
+    const nome = document.getElementById('input_nome').value;
+    const ra = document.getElementById('input_ra').value;
+    const email = document.getElementById('input_email').value;
+    const prova1 = parseFloat(document.getElementById('input_prova_1').value);
+    const aep1 = parseFloat(document.getElementById('input_aep_1').value);
+    const provaintegrada1 = parseFloat(document.getElementById('input_prova_integrada_1').value);
+    const prova2 = parseFloat(document.getElementById('input_prova_2').value);
+    const aep2 = parseFloat(document.getElementById('input_aep_2').value);
+    const provaintegrada2 = parseFloat(document.getElementById('input_prova_integrada_2').value);
 
     const DadosAluno = {
         nome,
@@ -21,9 +25,9 @@ function adicionaDadosAluno() {
         provaintegrada2,
     };
 
-    var mediaB1 = media(prova1, aep1, provaintegrada1);
-    var mediaB2 = media(prova2, aep2, provaintegrada2);
-    var mediaS3 = medias(mediaB1, mediaB2);
+    const mediaB1 = media(prova1, aep1, provaintegrada1);
+    const mediaB2 = media(prova2, aep2, provaintegrada2);
+    const mediaS3 = medias(mediaB1, mediaB2);
 
     if(!nome ||!ra || !email || !prova1 || !aep1 || !provaintegrada1 || !prova2 || !aep2 || !provaintegrada2){
     alert('É Obrigatório preencher todos as dados!');
@@ -58,9 +62,9 @@ function adicionaDadosAluno() {
     if (provaintegrada2 < 0, provaintegrada2 > 1) {
         alert('A nota da Integrada 2 deve estar entre 0 e 1!');
         return;
-        
     }
-   if (!email.includes('@')) {
+    
+    if (!email.includes('@')) {
         alert("Forneça um E-mail válido!");
         return;
     }
@@ -69,12 +73,12 @@ function adicionaDadosAluno() {
         alert("Forneça um RA válido!");
         return;
     }
-    
+
     criaNovoItemDaLista(DadosAluno, mediaB1, mediaB2, mediaS3);
 
+    let dadosSalvos = JSON.parse(localStorage.getItem('dadosAlunos')) || [];
+    dadosSalvos.push(DadosAluno);
     localStorage.setItem('dadosAlunos', JSON.stringify(dadosSalvos));
-
-    criaNovoItemDaLista(DadosAluno, mediaB1, mediaB2, mediaS3);
 
 }
 
@@ -136,8 +140,27 @@ function criaNovoItemDaLista(tarefa, media1, media2, media3) {
     checkbox.type = 'checkbox';
     checkbox.addEventListener('change', function() {
         if (this.checked) {
+            const rowIndex = novaLinha.rowIndex;
+            removerDadosSalvos(rowIndex - 1);
             novaLinha.remove(); 
         }
     });
     novaCelulaCheckbox.appendChild(checkbox);
+}
+
+function LocalStorage() {
+    const dadosSalvos = JSON.parse(localStorage.getItem('dadosAlunos')) || [];
+    dadosSalvos.forEach(function(dados) {
+        const mediaB1 = media(dados.prova1, dados.aep1, dados.provaintegrada1);
+        const mediaB2 = media(dados.prova2, dados.aep2, dados.provaintegrada2);
+        const mediaS3 = medias(mediaB1, mediaB2);
+
+        criaNovoItemDaLista(dados, mediaB1, mediaB2, mediaS3);
+    });
+}
+
+function removerDadosSalvos(index) {
+    let dadosSalvos = JSON.parse(localStorage.getItem('dadosAlunos')) || [];
+    dadosSalvos.splice(index, 1);
+    localStorage.setItem('dadosAlunos', JSON.stringify(dadosSalvos));
 }
